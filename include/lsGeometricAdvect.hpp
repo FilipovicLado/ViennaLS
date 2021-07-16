@@ -244,6 +244,7 @@ public:
 #endif
 
     typedef std::vector<std::array<hrleCoordType, 3>> SurfaceNodesType;
+    const auto &surfaceNormals = *(surfaceMesh->getVectorData("Normals"));
     const SurfaceNodesType &surfaceNodes = surfaceMesh->getNodes();
 
     // initialize with segmentation for whole range
@@ -385,7 +386,7 @@ public:
 
           // get filling fraction from distance to dist surface
           T tmpDistance =
-              dist->getSignedDistance(currentNode, currentCoords) / gridDelta;
+              dist->getSignedDistance(currentNode, currentCoords, surfaceNormals[std::distance(surfaceNodes.begin(), surfIt)]) / gridDelta;
 
           // if cell is far within a distribution, set it filled
           if (distIsPositive) {

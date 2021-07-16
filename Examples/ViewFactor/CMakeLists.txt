@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4)
 
-project("GeometricBosch")
+project("ViewFactor")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -33,12 +33,12 @@ SET(ViennaLS_DIR "${ViennaToolsDir}/ViennaLS/install/ViennaLS/lib/cmake/ViennaLS
 find_package(ViennaHRLE REQUIRED)
 find_package(ViennaLS REQUIRED)
 
-option(BUILD_TEST "Build unit test." OFF)
-if(BUILD_TEST)
-  add_executable(Test Test/Test.cpp)
-  target_include_directories(Test PUBLIC ${VIENNALS_INCLUDE_DIRS})
-  target_link_libraries(Test PRIVATE ${VIENNALS_LIBRARIES})
-endif()
+#option(BUILD_TEST "Build unit test." OFF)
+#if(BUILD_TEST)
+#  add_executable(Test Test/Test.cpp)
+#  target_include_directories(Test PUBLIC ${VIENNALS_INCLUDE_DIRS})
+#  target_link_libraries(Test PRIVATE ${VIENNALS_LIBRARIES})
+#endif()
 
 set(ViewFactor "ViewFactor")
 add_executable(${ViewFactor} ${ViewFactor}.cpp)
